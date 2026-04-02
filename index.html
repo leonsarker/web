@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWG AURKO | Elite FiveM Systems & UI Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK (v9+) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo"><span class="txt-purple">SWG</span> AURKO</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#store">Store</a></li>
+            <li id="nav-admin" style="display: none;"><a href="#admin-panel" class="txt-cyan">Dashboard</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right" style="display: flex; gap: 1rem; align-items: center;">
+            <a href="javascript:void(0)" id="open-login" style="text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; transition: color 0.3s; margin-right: 1.5rem;">Login</a>
+            <a href="#contact" class="btn-buy" style="width: auto; padding: 0.6rem 1.5rem; font-size: 0.85rem;">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- Client Login Modal -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content reveal">
+            <div class="modal-header">
+                <h3>Client <span class="txt-cyan">Login</span></h3>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            
+            <p class="modal-subtitle">Access your personal dashboard and digital purchases.</p>
+
+            <div class="auth-buttons" style="display: flex; flex-direction: column; gap: 1rem;">
+                <button id="google-auth" class="google-auth" style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: white; color: #3c4043; cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: 0.3s;">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google Logo" style="width: 20px; height: 20px;">
+                    Continue with Google
+                </button>
+                <button id="discord-auth" class="discord-auth">
+                    <span class="mini-icon" style="margin-bottom: 0; margin-right: 10px; font-size: 1.2rem;">👾</span>
+                    Continue with Discord
+                </button>
+            </div>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <div class="form-footer">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-buy" style="margin-top: 1.5rem; width: 100%;">Sign In</button>
+            </form>
+
+            <p class="auth-footer">Don't have an account? <a href="#" class="txt-cyan">Create one</a></p>
+        </div>
+    </div>
+
+    <!-- Section 1: Homepage / Hero -->
+    <main id="home" class="container-intro section">
+        <article class="about-content">
+            <span class="about-chip">About Me</span>
+            <h1 class="about-title">Hi, I'm <span class="txt-purple">SWG</span><span class="slash">\</span><span
+                    class="txt-cyan">AURKO</span></h1>
+
+            <p class="about-desc">
+                I'm a professional FiveM developer specializing in creating high-quality scripts and server solutions
+                for roleplay communities. With years of experience in the FiveM ecosystem, I deliver clean, optimized,
+                and reliable code that enhances your server's gameplay experience.
+                <br><br>
+                My focus is on performance, clean architecture, and client satisfaction. Whether you need custom
+                scripts, framework-based development, or complete server setups, I'm here to bring your vision to life.
+            </p>
+
+            <div class="mini-cards-grid">
+                <section class="mini-card">
+                    <span class="mini-icon">⟨ ⟩</span>
+                    <h4>Clean Code</h4>
+                    <p>Well-structured, readable, and maintainable codebase.</p>
+                </section>
+                <section class="mini-card">
+                    <span class="mini-icon">⚡</span>
+                    <h4>Performance</h4>
+                    <p>Optimized scripts with minimal resource usage.</p>
+                </section>
+                <section class="mini-card">
+                    <span class="mini-icon">🛡️</span>
+                    <h4>Reliability</h4>
+                    <p>Thoroughly tested and production-ready solutions.</p>
+                </section>
+                <section class="mini-card">
+                    <span class="mini-icon">🏅</span>
+                    <h4>Quality</h4>
+                    <p>Professional standards in every project.</p>
+                </section>
+            </div>
+        </article>
+
+        <div class="circle-graphic-container">
+            <div class="ring-outer circle-ring">
+                <div class="node node-top">⟨ ⟩</div>
+                <div class="node node-right">🏆</div>
+                <div class="node node-bottom">🛡️</div>
+                <div class="node node-left">⚡</div>
+            </div>
+            <div class="ring-mid circle-ring"></div>
+            <div class="ring-inner circle-ring">
+                <div class="circle-text">
+                    <h2>FiveM</h2>
+                    <span>Developer</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section 1.5: Admin Dashboard (Hidden) -->
+    <section id="admin-panel" class="reveal" style="display: none; background: rgba(6, 182, 212, 0.02); border-bottom: 1px solid rgba(6, 182, 212, 0.1);">
+        <span class="section-tag">Admin Console</span>
+        <h2 class="section-title">Manage <span class="txt-cyan">Store</span></h2>
+        
+        <div class="admin-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem;">
+            <form id="add-product-form" class="mini-card" style="padding: 3rem;">
+                <h3 style="font-family: var(--font-logo); margin-bottom: 2rem;">Add New Product</h3>
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="prod-name" placeholder="e.g. Nexus Inventory v4" required>
+                </div>
+                <div class="form-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="prod-price" placeholder="45.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Framework / Tags</label>
+                    <input type="text" id="prod-tags" placeholder="QBCore / qbox" required>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="prod-image" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label>Short Description</label>
+                    <textarea id="prod-desc" style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; color: #fff; height: 100px;" placeholder="Full animated grid inventory..."></textarea>
+                </div>
+                <button type="submit" class="btn-buy" style="margin-top: 1rem; width: 100%;">Post to Store</button>
+            </form>
+
+            <div class="admin-info">
+                <h3 style="font-family: var(--font-logo); margin-bottom: 1.5rem;">Live Statistics</h3>
+                <div class="mini-cards-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="mini-card">
+                        <span class="mini-icon">📦</span>
+                        <h4>Total Products</h4>
+                        <p id="stat-products">0</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="mini-icon">👥</span>
+                        <h4>Total Users</h4>
+                        <p id="stat-users">0</p>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+                    Authorized Web-Admin: <span id="admin-user-name" class="txt-purple">Elite Developer</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Services Overview -->
+    <section id="services" class="reveal">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Specialization <span class="txt-purple">&</span> <span class="txt-cyan">Skills</span></h2>
+        <div class="services-grid">
+            <div class="mini-card">
+                <span class="mini-icon">📜</span>
+                <h3>Custom Scripting</h3>
+                <p>Bespoke Lua development for qbox, QBCore, and Standalone. Complex missions, jobs, and interaction
+                    systems.</p>
+            </div>
+            <div class="mini-card">
+                <span class="mini-icon">⚙️</span>
+                <h3>Server Optimization</h3>
+                <p>Complete server audit to reduce resource lag and improve database throughput. 0.01ms client-side
+                    targets.</p>
+            </div>
+            <div class="mini-card">
+                <span class="mini-icon">🖥️</span>
+                <h3>UI/UX Design</h3>
+                <p>Modern, responsive NUI design using HTML/JS. Custom inventories, MDTs, and vehicle dashboards.</p>
+            </div>
+            <div class="mini-card">
+                <span class="mini-icon">🛠️</span>
+                <h3>Bug Fixing</h3>
+                <p>Rapid troubleshooting and repair for legacy scripts or framework conflicts. Reliable 24/7 support.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Services & Pricing Table -->
+    <section id="pricing" class="reveal">
+        <span class="section-tag">Packages</span>
+        <h2 class="section-title">Development <span class="txt-purple">&</span> <span class="txt-cyan">Pricing</span></h2>
+        
+        <div class="pricing-grid">
+            <!-- Essential Package -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Essential</h3>
+                    <div class="price">Starting at <span>$149</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li>Basic Framework Setup</li>
+                    <li>Performance Audit & Fixes</li>
+                    <li>Essential QBCore/qbox Scripts</li>
+                    <li>Discord Bot Integration</li>
+                    <li>48-hour Support Coverage</li>
+                </ul>
+                <button class="btn-buy" style="background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); box-shadow: none;">Select Plan</button>
+            </div>
+
+            <!-- Professional Package (Featured) -->
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Professional</h3>
+                    <div class="price">Starting at <span>$349</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li>Full Dynamic Roadmap</li>
+                    <li>Complete Custom UI Pack</li>
+                    <li>Advanced Economy Balance</li>
+                    <li>Custom Job/Mission Systems</li>
+                    <li>Priority Alpha Support</li>
+                </ul>
+                <button class="btn-buy">Select Plan</button>
+            </div>
+
+            <!-- Enterprise Package -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">Starting at <span>$799</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li>Custom Core Development</li>
+                    <li>Unique Interaction Logic</li>
+                    <li>Unlimited Resource Audits</li>
+                    <li>Dedicated Project Manager</li>
+                    <li>24/7 VIP Emergency Support</li>
+                </ul>
+                <button class="btn-buy" style="background: transparent; border: 1px solid var(--accent-purple); color: var(--accent-purple); box-shadow: none;">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Store -->
+    <section id="store" class="reveal" style="background: rgba(255,255,255,0.01);">
+        <span class="section-tag">Premium Scripts</span>
+        <h2 class="section-title">Product <span class="txt-purple">Store</span></h2>
+        <div class="store-grid">
+            <div class="product-card">
+                <div class="price-tag">$45.00</div>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1470&auto=format&fit=crop"
+                    class="product-img" alt="Inventory">
+                <div class="product-info">
+                    <div class="product-tags">QBCore / qbox / Standalone</div>
+                    <h3>Nexus Inventory v3</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Fully animated
+                        grid inventory with weight system and item durability.</p>
+                    <button class="btn-buy">Purchase Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="price-tag">$29.99</div>
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1528&auto=format&fit=crop"
+                    class="product-img" alt="Garage">
+                <div class="product-info">
+                    <div class="product-tags">QBCore / Standalone</div>
+                    <h3>Arcane Garage System</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Immersive 3D
+                        vehicle inspection with multi-layer storage logic.</p>
+                    <button class="btn-buy">Purchase Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="price-tag">$19.00</div>
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1470&auto=format&fit=crop"
+                    class="product-img" alt="Phone">
+                <div class="product-info">
+                    <div class="product-tags">Standalone / NUI</div>
+                    <h3>CyberHUD Bundle</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">A collection of
+                        ultra-responsive health, armor, and vehicle HUDs.</p>
+                    <button class="btn-buy">Purchase Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Reviews -->
+    <section id="reviews" class="reveal" style="background: rgba(255,255,255,0.01);">
+        <span class="section-tag">Testimonials</span>
+        <h2 class="section-title">Client <span class="txt-purple">Feedback</span></h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="star-rating">★★★★★</div>
+                <p>"The best developer I've worked with. His scripting is clean and the UI design is unmatched in the
+                    FiveM community."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div>
+                        <strong>Xero Roleplay</strong>
+                        <div style="font-size: 0.8rem; opacity: 0.6;">Server Owner</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="star-rating">★★★★★</div>
+                <p>"Outstanding optimization work. Our server ping dropped significantly after his database audit."</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div>
+                        <strong>Vortex RP</strong>
+                        <div style="font-size: 0.8rem; opacity: 0.6;">Lead Admin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Contact -->
+    <section id="contact" class="reveal" style="text-align: center;">
+        <div class="discord-banner">
+            <span style="font-size: 3rem;">👾</span>
+            <h2>Join My Discord</h2>
+            <p>Get instant support, custom quotes, and early access to script updates.</p>
+            <a href="#" class="btn-buy"
+                style="background: white; color: #5865F2; width: auto; padding: 1rem 3rem;">Connect Now</a>
+        </div>
+
+        <footer>
+            <div class="logo" style="margin-bottom: 2rem;"><span class="txt-purple">SWG</span> AURKO</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Elite FiveM Development. All rights
+                reserved.</p>
+        </footer>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

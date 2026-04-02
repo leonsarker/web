@@ -1,0 +1,43 @@
+{
+  "platform": "SWG AURKO | Elite FiveM Systems",
+  "version": "1.0.0",
+  "users": [
+    {
+      "uid": "sample_user_001",
+      "name": "Elite Client",
+      "email": "client@example.com",
+      "purchases": ["nexus_inventory_v3", "arcane_garage"],
+      "last_login": "2026-04-02T15:20:00Z"
+    }
+  ],
+  "store_items": [
+    {
+      "id": "nexus_inventory_v3",
+      "name": "Nexus Inventory v3",
+      "price": 45.00,
+      "category": "Framework",
+      "tags": ["QBCore", "qbox", "Standalone"]
+    },
+    {
+      "id": "arcane_garage",
+      "name": "Arcane Garage System",
+      "price": 29.99,
+      "category": "Script",
+      "tags": ["QBCore", "Standalone"]
+    }
+  ],
+  "pricing_tiers": {
+    "essential": {
+      "price": 149,
+      "features": ["Basic Setup", "Performance Audit", "Support"]
+    },
+    "professional": {
+      "price": 349,
+      "features": ["Full Roadmap", "Custom UI", "Priority Support"]
+    },
+    "enterprise": {
+      "price": 799,
+      "features": ["Core Dev", "Unlimited Audits", "24/7 VIP"]
+    }
+  }
+}
